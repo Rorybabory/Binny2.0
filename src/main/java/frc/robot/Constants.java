@@ -15,4 +15,6 @@ package frc.robot;
 public final class Constants {
     public static final int DRIVE_LEFT_CAN = 2;
     public static final int DRIVE_RIGHT_CAN = 3;
+
+    public static final double DRIVE_MAX = 1.0;
 }

@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -22,7 +23,10 @@ public class DriveTrain extends SubsystemBase {
     drive = new DifferentialDrive(left, right);
   }
   public void arcadeDrive(double x, double y) {
-    drive.arcadeDrive(x, y);
+    WheelSpeeds speds = DifferentialDrive.arcadeDriveIK(x, y, true);
+    left.set(speds.left * Constants.DRIVE_MAX);
+    right.set(speds.right * 0.9 * Constants.DRIVE_MAX);
+
   }
   @Override
   public void periodic() {
